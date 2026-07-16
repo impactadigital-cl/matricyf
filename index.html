@@ -75,46 +75,6 @@
 <body class="bg-bg-main min-h-screen">
 
     <!-- ============================================================ -->
-    <!-- NAVIGATION                                                   -->
-    <!-- ============================================================ -->
-    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 -translate-y-full">
-        <div class="glass-subtle mx-4 mt-3 rounded-3xl px-6 py-3 shadow-sm">
-            <div class="flex items-center justify-between max-w-6xl mx-auto">
-                <a href="#hero" class="font-heading text-xl text-text-main font-semibold tracking-wide hover:text-primary transition-colors" aria-label="Ir al inicio">
-                    C & F
-                </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center gap-8">
-                    <a href="#historia" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Nuestra Historia</a>
-                    <a href="#info" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Información</a>
-                    <a href="#confirmar" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Confirmar</a>
-                    <a href="#regalos" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Regalos</a>
-                    <a href="#mensajes" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Mensajes</a>
-                </div>
-
-                <!-- Mobile Menu Button -->
-                <button id="mobileMenuBtn" class="md:hidden p-2 text-text-main" aria-label="Abrir menú" aria-expanded="false">
-                    <i data-lucide="menu" class="w-6 h-6"></i>
-                </button>
-            </div>
-        </div>
-    </nav>
-
-    <!-- Mobile Menu Overlay -->
-    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-bg-main/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8" role="dialog" aria-modal="true" aria-label="Menú de navegación">
-        <button id="closeMobileMenu" class="absolute top-6 right-6 p-2 text-text-main" aria-label="Cerrar menú">
-            <i data-lucide="x" class="w-8 h-8"></i>
-        </button>
-        <a href="#hero" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Inicio</a>
-        <a href="#historia" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Nuestra Historia</a>
-        <a href="#info" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Información</a>
-        <a href="#confirmar" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Confirmar</a>
-        <a href="#regalos" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Regalos</a>
-        <a href="#mensajes" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Mensajes</a>
-    </div>
-
-    <!-- ============================================================ -->
     <!-- HERO SECTION                                                 -->
     <!-- ============================================================ -->
     <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
@@ -183,25 +143,6 @@
                 </div>
             </div>
 
-            <!-- CTA Buttons -->
-            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="800">
-                <a href="#confirmar" class="btn-primary inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-3xl font-body text-sm font-medium tracking-wide">
-                    <i data-lucide="check-circle" class="w-5 h-5"></i>
-                    Confirmar Asistencia
-                </a>
-                <a href="#info" class="btn-secondary inline-flex items-center justify-center gap-2 bg-white/80 text-text-main px-8 py-4 rounded-3xl font-body text-sm font-medium tracking-wide border border-lines">
-                    <i data-lucide="calendar" class="w-5 h-5"></i>
-                    Ver Itinerario
-                </a>
-            </div>
-        </div>
-
-        <!-- Scroll Indicator -->
-        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 scroll-indicator" data-aos="fade-in" data-aos-delay="1000">
-            <div class="flex flex-col items-center gap-2">
-                <span class="font-body text-xs text-text-sec tracking-widest uppercase">Scroll</span>
-                <i data-lucide="chevron-down" class="w-5 h-5 text-primary"></i>
-            </div>
         </div>
     </section>
 
