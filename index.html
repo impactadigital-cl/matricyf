@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Constanza & Fernando — Nos Casamos</title>
+    <meta name="description" content="Invitación digital de matrimonio de Constanza y Fernando. 10 de Octubre de 2026. Confirma tu asistencia.">
+    <meta name="author" content="Constanza & Fernando">
+    <meta name="theme-color" content="#C65A6D">
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://constanza-fernando.com">
+    <meta property="og:title" content="Constanza & Fernando — Nos Casamos">
+    <meta property="og:description" content="Nos casamos el 10 de Octubre de 2026. ¡Te esperamos!">
+    <meta property="og:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200">
+    <meta property="og:locale" content="es_CL">
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://constanza-fernando.com">
+    <meta property="twitter:title" content="Constanza & Fernando — Nos Casamos">
+    <meta property="twitter:description" content="Nos casamos el 10 de Octubre de 2026. ¡Te esperamos!">
+    <meta property="twitter:image" content="https://images.unsplash.com/photo-1519741497674-611481863552?w=1200">
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="assets/icons/favicon.svg">
+    <link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png">
+
+    <!-- Preconnect para fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <!-- AOS Animation Library -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- Tailwind CSS via CDN (para desarrollo rápido) -->
+    <!-- Recomendación: para producción, compilar con PostCSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'bg-main': '#F8F5EF',
+                        'card': 'rgba(255,255,255,0.90)',
+                        'primary': '#C65A6D',
+                        'primary-hover': '#A94859',
+                        'secondary': '#E78352',
+                        'accent': '#8C5A3C',
+                        'text-main': '#4A423D',
+                        'text-sec': '#7B746C',
+                        'lines': '#E8DED6',
+                    },
+                    fontFamily: {
+                        'heading': ['Cormorant Garamond', 'serif'],
+                        'subtitle': ['Playfair Display', 'serif'],
+                        'body': ['Poppins', 'sans-serif'],
+                    },
+                    borderRadius: {
+                        '3xl': '24px',
+                        '4xl': '32px',
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body class="bg-bg-main min-h-screen">
+
+    <!-- ============================================================ -->
+    <!-- NAVIGATION                                                   -->
+    <!-- ============================================================ -->
+    <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500 opacity-0 -translate-y-full">
+        <div class="glass-subtle mx-4 mt-3 rounded-3xl px-6 py-3 shadow-sm">
+            <div class="flex items-center justify-between max-w-6xl mx-auto">
+                <a href="#hero" class="font-heading text-xl text-text-main font-semibold tracking-wide hover:text-primary transition-colors" aria-label="Ir al inicio">
+                    C & F
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center gap-8">
+                    <a href="#historia" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Nuestra Historia</a>
+                    <a href="#info" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Información</a>
+                    <a href="#confirmar" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Confirmar</a>
+                    <a href="#regalos" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Regalos</a>
+                    <a href="#mensajes" class="nav-link font-body text-sm text-text-sec hover:text-primary transition-colors">Mensajes</a>
+                </div>
+
+                <!-- Mobile Menu Button -->
+                <button id="mobileMenuBtn" class="md:hidden p-2 text-text-main" aria-label="Abrir menú" aria-expanded="false">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Mobile Menu Overlay -->
+    <div id="mobileMenu" class="fixed inset-0 z-[60] bg-bg-main/95 backdrop-blur-xl hidden flex-col items-center justify-center gap-8" role="dialog" aria-modal="true" aria-label="Menú de navegación">
+        <button id="closeMobileMenu" class="absolute top-6 right-6 p-2 text-text-main" aria-label="Cerrar menú">
+            <i data-lucide="x" class="w-8 h-8"></i>
+        </button>
+        <a href="#hero" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Inicio</a>
+        <a href="#historia" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Nuestra Historia</a>
+        <a href="#info" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Información</a>
+        <a href="#confirmar" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Confirmar</a>
+        <a href="#regalos" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Regalos</a>
+        <a href="#mensajes" class="mobile-link font-heading text-3xl text-text-main hover:text-primary transition-colors">Mensajes</a>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- HERO SECTION                                                 -->
+    <!-- ============================================================ -->
+    <section id="hero" class="relative min-h-screen flex items-center justify-center overflow-hidden">
+        <!-- Background Image with Parallax -->
+        <div class="parallax-bg absolute inset-0 z-0">
+            <img 
+                src="assets/images/hero-couple.jpg" 
+                alt="Constanza y Fernando - Pareja romántica"
+                class="w-full h-full object-cover scale-110"
+                loading="eager"
+                fetchpriority="high"
+                onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80'"
+            >
+        </div>
+
+        <!-- Gradient Overlay -->
+        <div class="hero-overlay absolute inset-0 z-10"></div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 text-center px-6 max-w-4xl mx-auto pt-20">
+            <p class="font-body text-sm md:text-base tracking-[0.3em] uppercase text-primary mb-6" data-aos="fade-down" data-aos-delay="100">
+                Nos Casamos
+            </p>
+
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-text-main font-light mb-4" data-aos="fade-up" data-aos-delay="200">
+                Constanza
+            </h1>
+            <p class="font-subtitle text-3xl md:text-5xl text-primary italic mb-4" data-aos="fade-up" data-aos-delay="300">
+                &
+            </p>
+            <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl text-text-main font-light mb-8" data-aos="fade-up" data-aos-delay="400">
+                Fernando
+            </h1>
+
+            <div class="deco-line mx-auto mb-8" data-aos="scale-x" data-aos-delay="500"></div>
+
+            <p class="font-subtitle text-xl md:text-2xl text-accent mb-2" data-aos="fade-up" data-aos-delay="600">
+                10 de Octubre de 2026
+            </p>
+
+            <!-- Countdown Timer -->
+            <div class="flex justify-center gap-4 md:gap-8 mt-10 mb-12" data-aos="fade-up" data-aos-delay="700">
+                <div class="text-center">
+                    <div class="glass rounded-2xl px-4 py-3 md:px-6 md:py-4 min-w-[70px] md:min-w-[90px]">
+                        <span id="countdown-days" class="counter-number font-heading text-2xl md:text-4xl text-primary font-semibold">0</span>
+                        <p class="font-body text-xs md:text-sm text-text-sec mt-1">Días</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="glass rounded-2xl px-4 py-3 md:px-6 md:py-4 min-w-[70px] md:min-w-[90px]">
+                        <span id="countdown-hours" class="counter-number font-heading text-2xl md:text-4xl text-primary font-semibold">0</span>
+                        <p class="font-body text-xs md:text-sm text-text-sec mt-1">Horas</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="glass rounded-2xl px-4 py-3 md:px-6 md:py-4 min-w-[70px] md:min-w-[90px]">
+                        <span id="countdown-minutes" class="counter-number font-heading text-2xl md:text-4xl text-primary font-semibold">0</span>
+                        <p class="font-body text-xs md:text-sm text-text-sec mt-1">Min</p>
+                    </div>
+                </div>
+                <div class="text-center">
+                    <div class="glass rounded-2xl px-4 py-3 md:px-6 md:py-4 min-w-[70px] md:min-w-[90px]">
+                        <span id="countdown-seconds" class="counter-number font-heading text-2xl md:text-4xl text-primary font-semibold">0</span>
+                        <p class="font-body text-xs md:text-sm text-text-sec mt-1">Seg</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- CTA Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 justify-center" data-aos="fade-up" data-aos-delay="800">
+                <a href="#confirmar" class="btn-primary inline-flex items-center justify-center gap-2 bg-primary text-white px-8 py-4 rounded-3xl font-body text-sm font-medium tracking-wide">
+                    <i data-lucide="check-circle" class="w-5 h-5"></i>
+                    Confirmar Asistencia
+                </a>
+                <a href="#info" class="btn-secondary inline-flex items-center justify-center gap-2 bg-white/80 text-text-main px-8 py-4 rounded-3xl font-body text-sm font-medium tracking-wide border border-lines">
+                    <i data-lucide="calendar" class="w-5 h-5"></i>
+                    Ver Itinerario
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator -->
+        <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 scroll-indicator" data-aos="fade-in" data-aos-delay="1000">
+            <div class="flex flex-col items-center gap-2">
+                <span class="font-body text-xs text-text-sec tracking-widest uppercase">Scroll</span>
+                <i data-lucide="chevron-down" class="w-5 h-5 text-primary"></i>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- NUESTRA HISTORIA                                             -->
+    <!-- ============================================================ -->
+    <section id="historia" class="py-24 md:py-32 px-6">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">Nuestra Historia</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-6">
+                    Un amor que crece cada día
+                </h2>
+                <div class="deco-line mx-auto mb-8"></div>
+                <p class="font-body text-text-sec text-base md:text-lg max-w-2xl mx-auto leading-relaxed">
+                    Nos conocimos en un momento inesperado, cuando el destino decidió que nuestros caminos se cruzaran. 
+                    Desde entonces, cada risa compartida, cada aventura vivida y cada desafío superado juntos 
+                    nos ha llevado hasta aquí. Hoy, con el corazón lleno de gratitud, estamos listos para dar 
+                    el paso más importante de nuestras vidas.
+                </p>
+            </div>
+
+            <!-- Editorial Photos Grid -->
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <div class="card-hover rounded-3xl overflow-hidden shadow-sm" data-aos="fade-right">
+                    <img 
+                        src="assets/images/story-1.jpg" 
+                        alt="Constanza y Fernando - Momentos especiales"
+                        class="w-full h-[400px] md:h-[500px] object-cover"
+                        loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1522673607200-164d1b6ce486?w=800&q=80'"
+                    >
+                </div>
+                <div class="card-hover rounded-3xl overflow-hidden shadow-sm" data-aos="fade-left">
+                    <img 
+                        src="assets/images/story-2.jpg" 
+                        alt="Constanza y Fernando - Recuerdos"
+                        class="w-full h-[400px] md:h-[500px] object-cover"
+                        loading="lazy"
+                        onerror="this.src='https://images.unsplash.com/photo-1511285560929-80b456fea0bc?w=800&q=80'"
+                    >
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CARRUSEL DE FOTOS                                            -->
+    <!-- ============================================================ -->
+    <section class="py-16 md:py-24 overflow-hidden">
+        <div class="text-center mb-12 px-6" data-aos="fade-up">
+            <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">Recuerdos</p>
+            <h2 class="font-heading text-3xl md:text-4xl text-text-main font-light">Momentos que atesoramos</h2>
+        </div>
+
+        <div class="relative">
+            <div class="carousel-track" id="carouselTrack">
+                <!-- Las imágenes se cargan dinámicamente desde JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- INFORMACIÓN DEL MATRIMONIO                                   -->
+    <!-- ============================================================ -->
+    <section id="info" class="py-24 md:py-32 px-6 gradient-subtle">
+        <div class="max-w-5xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">El Gran Día</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-6">
+                    Información del Matrimonio
+                </h2>
+                <div class="deco-line mx-auto"></div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-6 md:gap-8">
+                <!-- Ceremonia Card -->
+                <div class="glass card-hover rounded-3xl p-8 md:p-10 text-center" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/5 flex items-center justify-center" aria-hidden="true">
+                        <i data-lucide="church" class="w-8 h-8 text-primary"></i>
+                    </div>
+                    <h3 class="font-subtitle text-2xl md:text-3xl text-text-main mb-2">Ceremonia</h3>
+                    <p class="font-heading text-xl text-accent mb-1">Nuestra Señora de Loreto</p>
+                    <p class="font-body text-text-sec mb-1">10 de Octubre de 2026</p>
+                    <p class="font-body text-primary font-medium text-lg mb-6">17:30 hrs</p>
+                    <a 
+                        href="https://maps.google.com/?q=Iglesia+Nuestra+Señora+de+Loreto" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-3xl font-body text-sm font-medium hover:bg-primary hover:text-white transition-all"
+                    >
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        Ver ubicación
+                    </a>
+                </div>
+
+                <!-- Recepción Card -->
+                <div class="glass card-hover rounded-3xl p-8 md:p-10 text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center" aria-hidden="true">
+                        <i data-lucide="wine" class="w-8 h-8 text-secondary"></i>
+                    </div>
+                    <h3 class="font-subtitle text-2xl md:text-3xl text-text-main mb-2">Recepción</h3>
+                    <p class="font-heading text-xl text-accent mb-1">Centro de Eventos Nuestros Ángeles</p>
+                    <p class="font-body text-text-sec mb-1">10 de Octubre de 2026</p>
+                    <p class="font-body text-primary font-medium text-lg mb-6">19:00 hrs</p>
+                    <a 
+                        href="https://maps.google.com/?q=Centro+de+Eventos+Nuestros+Angeles" 
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="btn-secondary inline-flex items-center gap-2 border-2 border-primary text-primary px-6 py-3 rounded-3xl font-body text-sm font-medium hover:bg-primary hover:text-white transition-all"
+                    >
+                        <i data-lucide="map-pin" class="w-4 h-4"></i>
+                        Ver ubicación
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- TIMELINE / ITINERARIO                                        -->
+    <!-- ============================================================ -->
+    <section class="py-24 md:py-32 px-6">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">Itinerario</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-6">
+                    Cómo será la noche
+                </h2>
+                <div class="deco-line mx-auto"></div>
+            </div>
+
+            <div class="relative">
+                <!-- Timeline Line (Desktop) -->
+                <div class="timeline-line hidden md:block" aria-hidden="true"></div>
+                <!-- Timeline Line (Mobile) -->
+                <div class="absolute left-6 md:left-1/2 top-0 bottom-0 w-0.5 bg-gradient-to-b from-lines via-primary to-lines md:hidden -translate-x-1/2" aria-hidden="true"></div>
+
+                <!-- Event 1: Cocktail -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12" data-aos="fade-up">
+                    <div class="md:w-1/2 md:pr-12 md:text-right pl-16 md:pl-0">
+                        <div class="glass rounded-3xl p-6 md:p-8">
+                            <div class="flex items-center gap-3 md:justify-end mb-2">
+                                <i data-lucide="glass-water" class="w-5 h-5 text-primary" aria-hidden="true"></i>
+                                <h3 class="font-subtitle text-xl text-text-main">Cocktail</h3>
+                            </div>
+                            <p class="font-body text-text-sec text-sm">Brindis de bienvenida y aperitivos</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-bg-main z-10" aria-hidden="true"></div>
+                    <div class="md:w-1/2 md:pl-12 pl-16">
+                        <p class="font-heading text-2xl text-primary font-semibold">19:00</p>
+                    </div>
+                </div>
+
+                <!-- Event 2: Cena -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center mb-12" data-aos="fade-up" data-aos-delay="100">
+                    <div class="md:w-1/2 md:pr-12 md:text-right order-2 md:order-1 pl-16 md:pl-0 mt-2 md:mt-0">
+                        <p class="font-heading text-2xl text-primary font-semibold">20:30</p>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-secondary border-4 border-bg-main z-10" aria-hidden="true"></div>
+                    <div class="md:w-1/2 md:pl-12 order-1 md:order-2 pl-16 md:pl-0">
+                        <div class="glass rounded-3xl p-6 md:p-8">
+                            <div class="flex items-center gap-3 mb-2">
+                                <i data-lucide="utensils" class="w-5 h-5 text-secondary" aria-hidden="true"></i>
+                                <h3 class="font-subtitle text-xl text-text-main">Cena</h3>
+                            </div>
+                            <p class="font-body text-text-sec text-sm">Una velada gastronómica inolvidable</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Event 3: Fiesta -->
+                <div class="relative flex flex-col md:flex-row items-start md:items-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="md:w-1/2 md:pr-12 md:text-right pl-16 md:pl-0">
+                        <div class="glass rounded-3xl p-6 md:p-8">
+                            <div class="flex items-center gap-3 md:justify-end mb-2">
+                                <i data-lucide="music" class="w-5 h-5 text-primary" aria-hidden="true"></i>
+                                <h3 class="font-subtitle text-xl text-text-main">Fiesta</h3>
+                            </div>
+                            <p class="font-body text-text-sec text-sm">Baila hasta que amanezca</p>
+                        </div>
+                    </div>
+                    <div class="absolute left-6 md:left-1/2 -translate-x-1/2 w-4 h-4 rounded-full bg-primary border-4 border-bg-main z-10" aria-hidden="true"></div>
+                    <div class="md:w-1/2 md:pl-12 pl-16">
+                        <p class="font-heading text-2xl text-primary font-semibold">21:30</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CONFIRMACIÓN DE ASISTENCIA (RSVP)                          -->
+    <!-- ============================================================ -->
+    <section id="confirmar" class="py-24 md:py-32 px-6 gradient-subtle">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">RSVP</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-6">
+                    Confirma tu Asistencia
+                </h2>
+                <div class="deco-line mx-auto mb-6"></div>
+                <p class="font-body text-text-sec">
+                    Fecha límite: <span class="text-primary font-medium">1 de Septiembre de 2026</span>
+                </p>
+            </div>
+
+            <!-- Important Notice Card -->
+            <div class="glass rounded-3xl p-6 md:p-8 mb-8 border-l-4 border-primary" data-aos="fade-up" role="alert">
+                <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-primary/10 flex items-center justify-center mt-1" aria-hidden="true">
+                        <i data-lucide="info" class="w-5 h-5 text-primary"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-subtitle text-lg text-text-main mb-2">Mensaje importante</h4>
+                        <p class="font-body text-text-sec text-sm leading-relaxed">
+                            Los niños son bienvenidos únicamente durante la ceremonia religiosa. 
+                            La recepción y fiesta serán exclusivamente para adultos.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RSVP Form -->
+            <form id="rsvpForm" class="glass rounded-3xl p-6 md:p-10" data-aos="fade-up" data-aos-delay="100" novalidate>
+                <!-- Nombre completo -->
+                <div class="mb-6">
+                    <label for="nombre" class="block font-body text-sm text-text-main mb-2 font-medium">
+                        Nombre completo <span class="text-primary">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nombre" 
+                        name="nombre"
+                        required
+                        autocomplete="name"
+                        class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50"
+                        placeholder="Escribe tu nombre completo"
+                        aria-required="true"
+                    >
+                    <p class="error-message hidden text-primary text-xs mt-1 font-body" id="nombre-error">Por favor ingresa tu nombre</p>
+                </div>
+
+                <!-- Asistencia -->
+                <div class="mb-6">
+                    <label class="block font-body text-sm text-text-main mb-3 font-medium">
+                        ¿Asistirás? <span class="text-primary">*</span>
+                    </label>
+                    <div class="grid grid-cols-2 gap-4" role="radiogroup" aria-required="true">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="asistencia" value="si" class="radio-custom hidden" required>
+                            <div class="flex items-center gap-3 p-4 rounded-2xl border-2 border-lines bg-white/50 transition-all">
+                                <div class="radio-dot w-5 h-5 rounded-full border-2 border-lines flex items-center justify-center transition-all">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                                </div>
+                                <span class="font-body text-sm text-text-main">Sí, asistiré</span>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="asistencia" value="no" class="radio-custom hidden">
+                            <div class="flex items-center gap-3 p-4 rounded-2xl border-2 border-lines bg-white/50 transition-all">
+                                <div class="radio-dot w-5 h-5 rounded-full border-2 border-lines flex items-center justify-center transition-all">
+                                    <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                                </div>
+                                <span class="font-body text-sm text-text-main">No podré asistir</span>
+                            </div>
+                        </label>
+                    </div>
+                    <p class="error-message hidden text-primary text-xs mt-1 font-body" id="asistencia-error">Por favor selecciona una opción</p>
+                </div>
+
+                <!-- Conditional Fields (shown when "Sí" is selected) -->
+                <div id="conditionalFields" class="hidden space-y-6">
+                    <!-- Restricciones alimentarias -->
+                    <div>
+                        <label class="block font-body text-sm text-text-main mb-3 font-medium">
+                            ¿Tienes restricciones alimentarias?
+                        </label>
+                        <div class="grid grid-cols-2 gap-4" role="radiogroup">
+                            <label class="cursor-pointer">
+                                <input type="radio" name="restricciones" value="si" class="radio-custom hidden">
+                                <div class="flex items-center gap-3 p-4 rounded-2xl border-2 border-lines bg-white/50 transition-all">
+                                    <div class="radio-dot w-5 h-5 rounded-full border-2 border-lines flex items-center justify-center transition-all">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                                    </div>
+                                    <span class="font-body text-sm text-text-main">Sí</span>
+                                </div>
+                            </label>
+                            <label class="cursor-pointer">
+                                <input type="radio" name="restricciones" value="no" class="radio-custom hidden" checked>
+                                <div class="flex items-center gap-3 p-4 rounded-2xl border-2 border-lines bg-white/50 transition-all">
+                                    <div class="radio-dot w-5 h-5 rounded-full border-2 border-lines flex items-center justify-center transition-all">
+                                        <div class="w-2.5 h-2.5 rounded-full bg-white"></div>
+                                    </div>
+                                    <span class="font-body text-sm text-text-main">No</span>
+                                </div>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Alergias (conditional) -->
+                    <div id="alergiasField" class="hidden">
+                        <label for="alergias" class="block font-body text-sm text-text-main mb-2 font-medium">
+                            Describe tus alergias o restricciones
+                        </label>
+                        <textarea 
+                            id="alergias" 
+                            name="alergias"
+                            rows="3"
+                            class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50 resize-none"
+                            placeholder="Ej: Alergia a frutos secos, vegetariano, etc."
+                        ></textarea>
+                    </div>
+
+                    <!-- Acompañante -->
+                    <div>
+                        <label for="acompanante" class="block font-body text-sm text-text-main mb-2 font-medium">
+                            Nombre de tu acompañante (+1)
+                        </label>
+                        <input 
+                            type="text" 
+                            id="acompanante" 
+                            name="acompanante"
+                            autocomplete="name"
+                            class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50"
+                            placeholder="Nombre de tu acompañante"
+                        >
+                    </div>
+                </div>
+
+                <!-- Teléfono -->
+                <div class="mb-6 mt-6">
+                    <label for="telefono" class="block font-body text-sm text-text-main mb-2 font-medium">
+                        Teléfono (WhatsApp) <span class="text-primary">*</span>
+                    </label>
+                    <input 
+                        type="tel" 
+                        id="telefono" 
+                        name="telefono"
+                        required
+                        autocomplete="tel"
+                        inputmode="tel"
+                        class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50"
+                        placeholder="+56 9 1234 5678"
+                        aria-required="true"
+                    >
+                    <p class="error-message hidden text-primary text-xs mt-1 font-body" id="telefono-error">Por favor ingresa tu teléfono</p>
+                </div>
+
+                <!-- Submit Button -->
+                <button 
+                    type="submit" 
+                    class="btn-primary w-full bg-primary text-white py-4 rounded-3xl font-body text-sm font-medium tracking-wide flex items-center justify-center gap-2"
+                >
+                    <i data-lucide="send" class="w-5 h-5" aria-hidden="true"></i>
+                    Confirmar asistencia
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- RECOMIÉNDANOS UNA CANCIÓN                                    -->
+    <!-- ============================================================ -->
+    <section class="py-16 md:py-24 px-6">
+        <div class="max-w-2xl mx-auto text-center" data-aos="fade-up">
+            <div class="glass rounded-3xl p-8 md:p-12">
+                <div class="w-14 h-14 mx-auto mb-6 rounded-full bg-secondary/10 flex items-center justify-center" aria-hidden="true">
+                    <i data-lucide="music-2" class="w-7 h-7 text-secondary"></i>
+                </div>
+                <h3 class="font-subtitle text-2xl md:text-3xl text-text-main mb-4">
+                    ¿Qué canción no puede faltar en nuestra fiesta?
+                </h3>
+                <form id="songForm" class="mt-8">
+                    <div class="flex flex-col sm:flex-row gap-4">
+                        <input 
+                            type="text" 
+                            id="cancion" 
+                            name="cancion"
+                            required
+                            class="form-input flex-1 px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50"
+                            placeholder="Nombre de la canción y artista"
+                        >
+                        <button 
+                            type="submit" 
+                            class="btn-primary bg-secondary text-white px-8 py-4 rounded-3xl font-body text-sm font-medium tracking-wide flex items-center justify-center gap-2 whitespace-nowrap"
+                        >
+                            <i data-lucide="send" class="w-4 h-4" aria-hidden="true"></i>
+                            Enviar canción
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- REGALOS                                                      -->
+    <!-- ============================================================ -->
+    <section id="regalos" class="py-24 md:py-32 px-6 gradient-subtle">
+        <div class="max-w-6xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">Regalos</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-4">
+                    Si deseas hacernos un regalo...
+                </h2>
+                <p class="font-body text-text-sec text-base md:text-lg max-w-xl mx-auto">
+                    El mejor regalo será compartir este día con nosotros. Pero si quieres sorprendernos, 
+                    puedes regalar uno de nuestros ramos.
+                </p>
+                <div class="deco-line mx-auto mt-8"></div>
+            </div>
+
+            <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1: Gerberas -->
+                <div class="gift-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="0">
+                    <div class="h-48 bg-gradient-to-br from-primary/5 to-secondary/5 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-20 h-20 text-primary/30" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M50 85c0-20-15-35-15-50s15-20 15-20s15 5 15 20-15 30-15 50z"/>
+                            <circle cx="50" cy="25" r="8"/>
+                            <path d="M35 35c-5 0-10 5-10 15s5 15 10 15M65 35c5 0 10 5 10 15s-5 15-10 15"/>
+                            <path d="M45 55c-3 0-5 3-5 8s2 8 5 8M55 55c3 0 5 3 5 8s-2 8-5 8"/>
+                        </svg>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="font-subtitle text-lg text-text-main mb-1">Ramo de Gerberas</h4>
+                        <p class="font-heading text-2xl text-primary font-semibold mb-4">CLP $50.000</p>
+                        <a href="#" class="btn-primary inline-block w-full bg-primary text-white py-3 rounded-2xl font-body text-sm font-medium">
+                            Regalar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 2: Tulipanes -->
+                <div class="gift-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="100">
+                    <div class="h-48 bg-gradient-to-br from-secondary/5 to-accent/5 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-20 h-20 text-secondary/30" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M50 80V40"/>
+                            <path d="M50 40c-10-5-20-15-20-25s10-15 20-15s20 5 20 15-10 20-20 25z"/>
+                            <path d="M50 40c10-5 20-15 20-25"/>
+                            <ellipse cx="50" cy="20" rx="6" ry="8"/>
+                        </svg>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="font-subtitle text-lg text-text-main mb-1">Ramo de Tulipanes</h4>
+                        <p class="font-heading text-2xl text-primary font-semibold mb-4">CLP $80.000</p>
+                        <a href="#" class="btn-primary inline-block w-full bg-primary text-white py-3 rounded-2xl font-body text-sm font-medium">
+                            Regalar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 3: Lilium -->
+                <div class="gift-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="200">
+                    <div class="h-48 bg-gradient-to-br from-accent/5 to-primary/5 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-20 h-20 text-accent/30" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                            <path d="M50 80V50"/>
+                            <path d="M50 50c-12-8-18-20-18-30s8-15 18-15s18 5 18 15-6 22-18 30z"/>
+                            <path d="M50 50c12-8 18-20 18-30"/>
+                            <path d="M35 25c-5 2-8 8-8 15"/>
+                            <path d="M65 25c5 2 8 8 8 15"/>
+                            <ellipse cx="50" cy="18" rx="5" ry="7"/>
+                        </svg>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="font-subtitle text-lg text-text-main mb-1">Ramo de Lilium</h4>
+                        <p class="font-heading text-2xl text-primary font-semibold mb-4">CLP $120.000</p>
+                        <a href="#" class="btn-primary inline-block w-full bg-primary text-white py-3 rounded-2xl font-body text-sm font-medium">
+                            Regalar
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Card 4: Rosas -->
+                <div class="gift-card glass rounded-3xl overflow-hidden" data-aos="fade-up" data-aos-delay="300">
+                    <div class="h-48 bg-gradient-to-br from-primary/5 to-accent/5 flex items-center justify-center" aria-hidden="true">
+                        <svg class="w-20 h-20 text-primary/30" viewBox="0 0 100 100" fill="none" stroke="currentColor" stroke-width="1">
+                            <circle cx="50" cy="50" r="25"/>
+                            <path d="M50 25c-5-10-15-10-15-5s5 10 15 5z"/>
+                            <path d="M50 25c5-10 15-10 15-5s-5 10-15 5z"/>
+                            <path d="M35 40c-8-5-12 0-10 5s8 5 10-5z"/>
+                            <path d="M65 40c8-5 12 0 10 5s-8 5-10-5z"/>
+                            <path d="M42 60c-3 8 0 12 8 12s11-4 8-12"/>
+                        </svg>
+                    </div>
+                    <div class="p-6 text-center">
+                        <h4 class="font-subtitle text-lg text-text-main mb-1">Ramo de Rosas</h4>
+                        <p class="font-heading text-2xl text-primary font-semibold mb-4">CLP $150.000</p>
+                        <a href="#" class="btn-primary inline-block w-full bg-primary text-white py-3 rounded-2xl font-body text-sm font-medium">
+                            Regalar
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- CÓDIGO DE VESTIMENTA                                         -->
+    <!-- ============================================================ -->
+    <section class="py-16 md:py-24 px-6">
+        <div class="max-w-xl mx-auto" data-aos="zoom-in">
+            <div class="glass rounded-3xl p-8 md:p-12 text-center">
+                <div class="w-16 h-16 mx-auto mb-6 rounded-full bg-primary/5 flex items-center justify-center" aria-hidden="true">
+                    <i data-lucide="shirt" class="w-8 h-8 text-primary"></i>
+                </div>
+                <h3 class="font-subtitle text-2xl md:text-3xl text-text-main mb-2">Dress Code</h3>
+                <p class="font-heading text-xl text-accent mb-8">Elegante / Gala</p>
+
+                <div class="flex flex-wrap justify-center gap-4">
+                    <span class="badge inline-flex items-center gap-2 bg-primary/5 text-primary px-5 py-2.5 rounded-full font-body text-sm">
+                        <i data-lucide="x-circle" class="w-4 h-4" aria-hidden="true"></i>
+                        No vestir de blanco
+                    </span>
+                    <span class="badge inline-flex items-center gap-2 bg-primary/5 text-primary px-5 py-2.5 rounded-full font-body text-sm">
+                        <i data-lucide="x-circle" class="w-4 h-4" aria-hidden="true"></i>
+                        No utilizar encaje
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- MENSAJES PARA LOS NOVIOS                                    -->
+    <!-- ============================================================ -->
+    <section id="mensajes" class="py-24 md:py-32 px-6 gradient-subtle">
+        <div class="max-w-3xl mx-auto">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <p class="font-body text-sm tracking-[0.2em] uppercase text-primary mb-4">Recuerdos</p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-4">
+                    Déjanos un recuerdo para siempre
+                </h2>
+                <p class="font-body text-text-sec text-base md:text-lg max-w-xl mx-auto">
+                    Puedes escribirnos un mensaje o compartir una fotografía de este día tan especial.
+                </p>
+                <div class="deco-line mx-auto mt-8"></div>
+            </div>
+
+            <form id="messageForm" class="glass rounded-3xl p-6 md:p-10" data-aos="fade-up" novalidate>
+                <!-- Nombre -->
+                <div class="mb-6">
+                    <label for="msgNombre" class="block font-body text-sm text-text-main mb-2 font-medium">
+                        Tu nombre <span class="text-primary">*</span>
+                    </label>
+                    <input 
+                        type="text" 
+                        id="msgNombre" 
+                        name="msgNombre"
+                        required
+                        autocomplete="name"
+                        class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50"
+                        placeholder="¿Cómo te llamas?"
+                    >
+                    <p class="error-message hidden text-primary text-xs mt-1 font-body" id="msgNombre-error">Por favor ingresa tu nombre</p>
+                </div>
+
+                <!-- Mensaje -->
+                <div class="mb-6">
+                    <label for="mensaje" class="block font-body text-sm text-text-main mb-2 font-medium">
+                        Tu mensaje <span class="text-primary">*</span>
+                    </label>
+                    <textarea 
+                        id="mensaje" 
+                        name="mensaje"
+                        rows="5"
+                        required
+                        class="form-input w-full px-5 py-4 rounded-2xl bg-white/50 font-body text-text-main placeholder-text-sec/50 resize-none"
+                        placeholder="Escribe aquí tu mensaje para los novios..."
+                    ></textarea>
+                    <p class="error-message hidden text-primary text-xs mt-1 font-body" id="mensaje-error">Por favor escribe un mensaje</p>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-8">
+                    <label class="block font-body text-sm text-text-main mb-2 font-medium">
+                        Comparte una fotografía (opcional)
+                    </label>
+                    <div class="upload-area rounded-2xl p-8 text-center cursor-pointer" id="uploadArea">
+                        <input type="file" id="foto" name="foto" accept="image/*" class="hidden">
+                        <i data-lucide="image-plus" class="w-10 h-10 text-text-sec/40 mx-auto mb-3" aria-hidden="true"></i>
+                        <p class="font-body text-sm text-text-sec">
+                            Arrastra una imagen aquí o <span class="text-primary font-medium">haz clic para seleccionar</span>
+                        </p>
+                        <p class="font-body text-xs text-text-sec/60 mt-1">JPG, PNG hasta 10MB</p>
+                    </div>
+                    <div id="filePreview" class="hidden mt-4 rounded-2xl overflow-hidden">
+                        <img id="previewImg" src="" alt="Vista previa de la imagen" class="w-full h-48 object-cover">
+                        <button type="button" id="removeFile" class="mt-2 text-primary font-body text-sm flex items-center gap-1">
+                            <i data-lucide="trash-2" class="w-4 h-4" aria-hidden="true"></i>
+                            Eliminar imagen
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Submit -->
+                <button 
+                    type="submit" 
+                    class="btn-primary w-full bg-primary text-white py-4 rounded-3xl font-body text-sm font-medium tracking-wide flex items-center justify-center gap-2"
+                >
+                    <i data-lucide="heart" class="w-5 h-5" aria-hidden="true"></i>
+                    Enviar mensaje
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- ============================================================ -->
+    <!-- FOOTER                                                       -->
+    <!-- ============================================================ -->
+    <footer class="relative">
+        <!-- Full Width Image -->
+        <div class="relative h-[400px] md:h-[500px] overflow-hidden">
+            <img 
+                src="assets/images/footer-couple.jpg" 
+                alt="Constanza y Fernando"
+                class="w-full h-full object-cover"
+                loading="lazy"
+                onerror="this.src='https://images.unsplash.com/photo-1519741497674-611481863552?w=1920&q=80'"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-bg-main via-bg-main/60 to-transparent"></div>
+        </div>
+
+        <!-- Footer Content -->
+        <div class="relative -mt-32 md:-mt-40 pb-16 px-6">
+            <div class="max-w-3xl mx-auto text-center">
+                <p class="font-subtitle text-xl md:text-2xl text-text-main italic mb-6" data-aos="fade-up">
+                    Gracias por acompañarnos en el día más importante de nuestras vidas.
+                </p>
+
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-2" data-aos="fade-up" data-aos-delay="100">
+                    Constanza
+                </h2>
+                <p class="font-subtitle text-2xl md:text-3xl text-primary italic mb-2" data-aos="fade-up" data-aos-delay="150">
+                    &
+                </p>
+                <h2 class="font-heading text-4xl md:text-5xl text-text-main font-light mb-6" data-aos="fade-up" data-aos-delay="200">
+                    Fernando
+                </h2>
+
+                <div class="flex items-center justify-center gap-3 mb-4" data-aos="fade-up" data-aos-delay="250">
+                    <span class="text-primary text-2xl" aria-hidden="true">❤️</span>
+                </div>
+
+                <p class="font-body text-text-sec text-lg" data-aos="fade-up" data-aos-delay="300">
+                    10 de Octubre de 2026
+                </p>
+            </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div class="border-t border-lines py-6 px-6">
+            <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+                <p class="font-body text-xs text-text-sec/60">
+                    Constanza & Fernando — 2026
+                </p>
+                <p class="font-body text-xs text-text-sec/60">
+                    Con amor, para nuestros seres queridos
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ============================================================ -->
+    <!-- SCRIPTS                                                      -->
+    <!-- ============================================================ -->
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- AOS Animation Library -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+    <!-- App Scripts -->
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/carousel.js"></script>
+    <script src="assets/js/countdown.js"></script>
+    <script src="assets/js/navigation.js"></script>
+    <script src="assets/js/forms.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

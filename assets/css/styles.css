@@ -1,0 +1,333 @@
+/* ============================================================
+   CONSTANZA & FERNANDO — Wedding Invitation
+   Custom Styles
+   ============================================================ */
+
+/* ---------- Reset & Base ---------- */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    background-color: #F8F5EF;
+    color: #4A423D;
+    font-family: 'Poppins', sans-serif;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Glassmorphism ---------- */
+.glass {
+    background: rgba(255, 255, 255, 0.90);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.glass-subtle {
+    background: rgba(255, 255, 255, 0.70);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+}
+
+/* ---------- Hero Overlay ---------- */
+.hero-overlay {
+    background: linear-gradient(
+        to bottom,
+        rgba(248, 245, 239, 0.3) 0%,
+        rgba(248, 245, 239, 0.5) 40%,
+        rgba(248, 245, 239, 0.85) 70%,
+        rgba(248, 245, 239, 1) 100%
+    );
+}
+
+/* ---------- Subtle Gradients ---------- */
+.gradient-subtle {
+    background: linear-gradient(
+        135deg,
+        rgba(198, 90, 109, 0.03) 0%,
+        rgba(231, 131, 82, 0.03) 100%
+    );
+}
+
+/* ---------- Button Transitions ---------- */
+.btn-primary {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(198, 90, 109, 0.25);
+}
+
+.btn-secondary {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.btn-secondary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(74, 66, 61, 0.1);
+}
+
+/* ---------- Card Hover Effects ---------- */
+.card-hover {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.card-hover:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 60px rgba(74, 66, 61, 0.08);
+}
+
+/* ---------- Gift Card Hover ---------- */
+.gift-card {
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.gift-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: 0 25px 50px rgba(198, 90, 109, 0.12);
+}
+
+/* ---------- Scroll Indicator Animation ---------- */
+@keyframes bounce-scroll {
+    0%, 100% {
+        transform: translateY(0);
+        opacity: 0.7;
+    }
+    50% {
+        transform: translateY(10px);
+        opacity: 1;
+    }
+}
+
+.scroll-indicator {
+    animation: bounce-scroll 2s ease-in-out infinite;
+}
+
+/* ---------- Timeline ---------- */
+.timeline-line {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 2px;
+    height: 100%;
+    background: linear-gradient(
+        to bottom,
+        #E8DED6,
+        #C65A6D,
+        #E8DED6
+    );
+}
+
+/* ---------- Carousel ---------- */
+.carousel-track {
+    display: flex;
+    gap: 1rem;
+    animation: scroll-carousel 40s linear infinite;
+}
+
+.carousel-track:hover {
+    animation-play-state: paused;
+}
+
+@keyframes scroll-carousel {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%);
+    }
+}
+
+/* ---------- Form Inputs ---------- */
+.form-input {
+    transition: all 0.3s ease;
+    border: 2px solid #E8DED6;
+}
+
+.form-input:focus {
+    border-color: #C65A6D;
+    box-shadow: 0 0 0 4px rgba(198, 90, 109, 0.08);
+    outline: none;
+}
+
+/* ---------- Custom Radio Buttons ---------- */
+.radio-custom:checked + div {
+    border-color: #C65A6D;
+    background-color: rgba(198, 90, 109, 0.05);
+}
+
+.radio-custom:checked + div .radio-dot {
+    background-color: #C65A6D;
+    border-color: #C65A6D;
+}
+
+/* ---------- Parallax ---------- */
+.parallax-bg {
+    will-change: transform;
+}
+
+/* ---------- Counter Numbers ---------- */
+.counter-number {
+    font-variant-numeric: tabular-nums;
+}
+
+/* ---------- Decorative Line ---------- */
+.deco-line {
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(
+        to right,
+        transparent,
+        #C65A6D,
+        transparent
+    );
+}
+
+/* ---------- File Upload Area ---------- */
+.upload-area {
+    border: 2px dashed #E8DED6;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover,
+.upload-area.dragover {
+    border-color: #C65A6D;
+    background: rgba(198, 90, 109, 0.02);
+}
+
+/* ---------- Dress Code Badges ---------- */
+.badge {
+    transition: all 0.3s ease;
+}
+
+.badge:hover {
+    transform: scale(1.05);
+}
+
+/* ---------- Navigation Link Underline ---------- */
+.nav-link {
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 1px;
+    background: #C65A6D;
+    transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+/* ---------- Error Messages ---------- */
+.error-message {
+    display: none;
+}
+
+.error-message.visible {
+    display: block;
+}
+
+/* ---------- Selection Color ---------- */
+::selection {
+    background: rgba(198, 90, 109, 0.2);
+    color: #4A423D;
+}
+
+/* ---------- Custom Scrollbar ---------- */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #F8F5EF;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #E8DED6;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #C65A6D;
+}
+
+/* ---------- Responsive Timeline (Mobile) ---------- */
+@media (max-width: 768px) {
+    .timeline-line {
+        left: 24px;
+    }
+}
+
+/* ---------- Reduced Motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+
+    .carousel-track {
+        animation: none;
+    }
+
+    .scroll-indicator {
+        animation: none;
+    }
+}
+
+/* ---------- High Contrast Mode ---------- */
+@media (prefers-contrast: high) {
+    .glass,
+    .glass-subtle {
+        background: rgba(255, 255, 255, 0.95);
+        border: 2px solid #4A423D;
+    }
+
+    .form-input {
+        border: 2px solid #4A423D;
+    }
+
+    .form-input:focus {
+        border-color: #C65A6D;
+        outline: 3px solid #C65A6D;
+        outline-offset: 2px;
+    }
+}
+
+/* ---------- Focus Visible (Accessibility) ---------- */
+*:focus-visible {
+    outline: 2px solid #C65A6D;
+    outline-offset: 2px;
+}
+
+/* ---------- Print Styles ---------- */
+@media print {
+    .scroll-indicator,
+    #navbar,
+    #mobileMenuBtn,
+    .carousel-track {
+        display: none !important;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .glass,
+    .glass-subtle {
+        background: white;
+        border: 1px solid #ccc;
+    }
+}
