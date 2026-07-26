@@ -21,6 +21,7 @@
     const conditionalFields = document.getElementById('conditionalFields');
     const restriccionesRadios = document.querySelectorAll('input[name="restricciones"]');
     const alergiasField = document.getElementById('alergiasField');
+    const sinGlutenField = document.getElementById('sinGlutenField');
 
     /**
      * Muestra u oculta campos condicionales según asistencia
@@ -63,6 +64,22 @@
         }
     }
 
+    /**
+     * Muestra u oculta campo sin gluten
+     */
+    function toggleSinGlutenField() {
+        const selected = document.querySelector('input[name="restricciones"]:checked');
+        if (!selected) return;
+
+        if (selected.value === 'si') {
+            sinGlutenField.classList.remove('hidden');
+            sinGlutenField.classList.add('block');
+        } else {
+            sinGlutenField.classList.add('hidden');
+            sinGlutenField.classList.remove('block');
+        }
+    }
+
     // Event listeners para radio buttons
     asistenciaRadios.forEach(radio => {
         radio.addEventListener('change', toggleConditionalFields);
@@ -70,6 +87,7 @@
 
     restriccionesRadios.forEach(radio => {
         radio.addEventListener('change', toggleAlergiasField);
+        radio.addEventListener('change', toggleSinGlutenField);
     });
 
     /**
@@ -133,6 +151,7 @@
             if (formData.get('asistencia') === 'si') {
                 body += 'Restricciones: ' + (formData.get('restricciones') || 'no') + '\n';
                 body += 'Alergias: ' + (formData.get('alergias') || 'Ninguna') + '\n';
+                body += 'Sin gluten: ' + (formData.get('sin_gluten') ? 'Sí' : 'No') + '\n';
                 body += 'Acompañante: ' + (formData.get('acompanante') || 'No') + '\n';
             }
 
@@ -216,19 +235,37 @@
      * Maneja la carga de archivos
      */
     function handleFile(file) {
-        if (!file.type.startsWith('image/')) {
-            showToast('Por favor selecciona una imagen válida', 'error');
+        const isImage = file.type.startsWith('image/');
+        const isVideo = file.type.startsWith('video/');
+
+        if (!isImage && !isVideo) {
+            showToast('Por favor selecciona una imagen o video válido', 'error');
             return;
         }
 
-        if (file.size > 10 * 1024 * 1024) { // 10MB
-            showToast('La imagen no debe superar los 10MB', 'error');
+        if (file.size > 50 * 1024 * 1024) { // 50MB
+            showToast('El archivo no debe superar los 50MB', 'error');
             return;
         }
 
         const reader = new FileReader();
         reader.onload = (e) => {
-            previewImg.src = e.target.result;
+            previewContainer.innerHTML = '';
+
+            if (isImage) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.alt = 'Vista previa';
+                img.className = 'w-full h-48 object-cover';
+                previewContainer.appendChild(img);
+            } else if (isVideo) {
+                const video = document.createElement('video');
+                video.src = e.target.result;
+                video.controls = true;
+                video.className = 'w-full h-48 object-cover bg-black';
+                previewContainer.appendChild(video);
+            }
+
             filePreview.classList.remove('hidden');
             uploadArea.classList.add('hidden');
         };
@@ -260,8 +297,14 @@
 
             const body = 'NUEVO MENSAJE PARA LOS NOVIOS\n\n' +
                 'De: ' + msgNombre.value + '\n' +
-                'Mensaje: ' + mensaje.value + '\n' +
-                '\n---\nEnviado desde la invitación digital de Constanza & Fernando';
+                'Mensaje: ' + mensaje.value + '\n';
+
+            if (fotoInput.files.length) {
+                const file = fotoInput.files[0];
+                body += 'Archivo adjunto: ' + file.name + ' (' + (file.size / (1024 * 1024)).toFixed(2) + ' MB)\n';
+            }
+
+            body += '\n---\nEnviado desde la invitación digital de Constanza & Fernando';
 
             const subject = encodeURIComponent('Mensaje para Constanza y Fernando');
             const mailtoLink = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
@@ -289,7 +332,7 @@
 
         const toast = document.createElement('div');
         toast.className = 'toast-notification fixed bottom-6 left-1/2 -translate-x-1/2 z-[70] px-6 py-4 rounded-2xl font-body text-sm shadow-lg transition-all duration-300';
-        toast.style.background = type === 'error' ? '#A94859' : '#C65A6D';
+        toast.style.background = type === 'error' ? '#8a2a52' : '#a83461';
         toast.style.color = 'white';
         toast.textContent = message;
         toast.setAttribute('role', 'alert');

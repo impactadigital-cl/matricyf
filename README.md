@@ -99,7 +99,7 @@ tailwind.config = {
     theme: {
         extend: {
             colors: {
-                'primary': '#C65A6D',      // Color principal
+                'primary': '#a83461',      // Color principal
                 'secondary': '#E78352',    // Color secundario
                 'accent': '#8C5A3C',       // Acento
                 'bg-main': '#F8F5EF',      // Fondo

@@ -57,7 +57,7 @@
             }
         });
 
-        console.log('%c💕 Constanza & Fernando', 'font-size: 20px; font-weight: bold; color: #C65A6D;');
+        console.log('%c💕 Constanza & Fernando', 'font-size: 20px; font-weight: bold; color: #a83461;');
         console.log('%cInvitación digital cargada correctamente', 'font-size: 12px; color: #7B746C;');
     }
 
