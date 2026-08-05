@@ -3,7 +3,7 @@
  * CONSTANZA & FERNANDO — Wedding Invitation
  * Fade Carousel Component
  *
- * Carrusel de fotos con autoplay de 1.3s y efecto fade
+ * Carrusel de fotos con autoplay de 1.5s y efecto fade lento
  * ============================================================
  */
 
@@ -32,7 +32,7 @@
 
         const startAutoplay = () => {
             stopAutoplay();
-            autoplayInterval = setInterval(next, 1300);
+            autoplayInterval = setInterval(next, 1500);
         };
 
         const stopAutoplay = () => {
