@@ -387,7 +387,9 @@
             </div>
 
             <!-- RSVP Form -->
-            <form id="rsvpForm" class="glass rounded-3xl px-6 py-5 md:px-10 md:py-5 border border-[#a83461]" data-aos="fade-up" data-aos-delay="100" novalidate>
+            <form id="rsvpForm" class="glass rounded-3xl px-6 py-5 md:px-10 md:py-5 border border-[#a83461]" data-aos="fade-up" data-aos-delay="100" novalidate action="https://formspree.io/f/mykrlykw" method="POST">
+                <input type="hidden" name="_subject" value="CONFIRMACIÓN MATRIMONIO CYF">
+                <input type="hidden" name="_captcha" value="false">
                 <!-- Nombre completo -->
                 <div class="mb-6">
                     <label for="nombre" class="block font-body text-sm text-text-main mb-2 font-medium">
@@ -529,6 +531,24 @@
                     Confirmar asistencia
                 </button>
             </form>
+
+            <!-- Carrusel de fotos -->
+            <div class="carousel relative mt-8 md:mt-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="carousel-viewport overflow-hidden rounded-3xl border border-[#a83461]">
+                    <div class="carousel-track flex transition-transform duration-500 ease-in-out">
+                        <img src="f1.jpeg" alt="Momento 1" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f2.jpeg" alt="Momento 2" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f3.jpeg" alt="Momento 3" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f4.jpeg" alt="Momento 4" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f5.jpeg" alt="Momento 5" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f6.jpeg" alt="Momento 6" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                        <img src="f7.jpeg" alt="Momento 7" class="w-full flex-shrink-0 object-cover" loading="lazy">
+                    </div>
+                </div>
+                <button class="carousel-btn carousel-btn-prev absolute left-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-10 h-10 rounded-full shadow flex items-center justify-center" aria-label="Anterior">&#10094;</button>
+                <button class="carousel-btn carousel-btn-next absolute right-3 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white text-primary w-10 h-10 rounded-full shadow flex items-center justify-center" aria-label="Siguiente">&#10095;</button>
+                <div class="carousel-dots flex justify-center gap-2 mt-4"></div>
+            </div>
         </div>
     </section>
 
@@ -817,7 +837,7 @@
         </div>
     </section>
 
-    <img src="separador.png" alt="" class="mx-auto w-24 md:w-32 h-auto my-6" loading="lazy" aria-hidden="true" onerror="this.style.display='none'">
+    <img src="separador.png" alt="" class="mx-auto w-96 md:w-[512px] h-auto my-8" loading="lazy" aria-hidden="true" onerror="this.style.display='none'">
 
     <!-- ============================================================ -->
     <!-- SCRIPTS                                                      -->

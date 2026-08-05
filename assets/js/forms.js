@@ -121,13 +121,11 @@
         rsvpForm.addEventListener('submit', function(e) {
             e.preventDefault();
 
-            // Validar campos requeridos
             const nombre = document.getElementById('nombre');
             const telefono = document.getElementById('telefono');
             const asistencia = document.querySelector('input[name="asistencia"]:checked');
 
             let isValid = true;
-
             isValid = validateField(nombre, 'nombre-error') && isValid;
             isValid = validateField(telefono, 'telefono-error') && isValid;
 
@@ -141,29 +139,34 @@
 
             if (!isValid) return;
 
-            // Construir email
             const formData = new FormData(rsvpForm);
-            let body = 'NUEVA CONFIRMACIÓN DE ASISTENCIA\n\n';
-            body += 'Nombre: ' + (formData.get('nombre') || '') + '\n';
-            body += 'Asistencia: ' + (formData.get('asistencia') || '') + '\n';
-            body += 'Teléfono: ' + (formData.get('telefono') || '') + '\n';
+            formData.append('_subject', 'CONFIRMACIÓN MATRIMONIO CYF');
+            formData.append('_captcha', 'false');
 
-            if (formData.get('asistencia') === 'si') {
-                body += 'Restricciones: ' + (formData.get('restricciones') || 'no') + '\n';
-                body += 'Alergias: ' + (formData.get('alergias') || 'Ninguna') + '\n';
-                body += 'Sin gluten: ' + (formData.get('sin_gluten') ? 'Sí' : 'No') + '\n';
-                body += 'Acompañante: ' + (formData.get('acompanante') || 'No') + '\n';
-            }
-
-            body += '\n---\nEnviado desde la invitación digital de Constanza & Fernando';
-
-            const subject = encodeURIComponent('Confirmación de Asistencia - Constanza & Fernando');
-            const mailtoLink = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-
-            window.location.href = mailtoLink;
-
-            // Mostrar mensaje de confirmación
-            showToast('¡Gracias! Se abrirá tu cliente de correo para confirmar.');
+            fetch('https://formspree.io/f/mykrlykw', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast('¡Gracias! Tu confirmación ha sido enviada.');
+                    rsvpForm.reset();
+                    conditionalFields.classList.add('hidden');
+                    conditionalFields.classList.remove('block');
+                    alergiasField.classList.add('hidden');
+                    alergiasField.classList.remove('block');
+                    sinGlutenField.classList.add('hidden');
+                    sinGlutenField.classList.remove('block');
+                } else {
+                    showToast('Hubo un error al enviar. Por favor intenta nuevamente.', 'error');
+                }
+            })
+            .catch(error => {
+                showToast('Hubo un error de conexión. Por favor intenta nuevamente.', 'error');
+            });
         });
     }
 
