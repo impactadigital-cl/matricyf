@@ -44,11 +44,35 @@
     }
 
     /**
+     * Inicializa el reproductor de música
+     */
+    function initMusicPlayer() {
+        const audio = document.getElementById('weddingMusic');
+        const playBtn = document.getElementById('musicPlayBtn');
+        const playIcon = document.getElementById('musicPlayIcon');
+
+        if (!audio || !playBtn || !playIcon) return;
+
+        playBtn.addEventListener('click', async () => {
+            if (audio.paused) {
+                await audio.play();
+                playIcon.innerHTML = '<rect x="6" y="4" width="4" height="16"></rect><rect x="14" y="4" width="4" height="16"></rect>';
+                playBtn.classList.add('playing');
+            } else {
+                audio.pause();
+                playIcon.innerHTML = '<polygon points="6 4v16l13-8z"></polygon>';
+                playBtn.classList.remove('playing');
+            }
+        });
+    }
+
+    /**
      * Inicializa todo
      */
     function init() {
         initIcons();
         initAOS();
+        initMusicPlayer();
 
         // Re-inicializar iconos después de que AOS modifique el DOM
         document.addEventListener('aos:in', () => {
