@@ -182,17 +182,28 @@
             const cancion = document.getElementById('cancion');
             if (!cancion.value.trim()) return;
 
-            const body = 'CANCIÓN RECOMENDADA\n\n';
-            body += 'Canción: ' + cancion.value + '\n';
-            body += '\n---\nEnviado desde la invitación digital de Constanza & Fernando';
+            const formData = new FormData(songForm);
+            formData.append('_subject', 'Recomendación de Canción - Constanza & Fernando');
+            formData.append('_captcha', 'false');
 
-            const subject = encodeURIComponent('Recomendación de Canción - Constanza & Fernando');
-            const mailtoLink = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-
-            window.location.href = mailtoLink;
-
-            showToast('¡Gracias por tu recomendación!');
-            cancion.value = '';
+            fetch('https://formspree.io/f/mykrlykw', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast('¡Gracias por tu recomendación!');
+                    songForm.reset();
+                } else {
+                    showToast('Hubo un error al enviar. Por favor intenta nuevamente.', 'error');
+                }
+            })
+            .catch(error => {
+                showToast('Hubo un error de conexión. Por favor intenta nuevamente.', 'error');
+            });
         });
     }
 
@@ -203,7 +214,7 @@
     const uploadArea = document.getElementById('uploadArea');
     const fotoInput = document.getElementById('foto');
     const filePreview = document.getElementById('filePreview');
-    const previewImg = document.getElementById('previewImg');
+    const previewContainer = document.getElementById('previewContainer');
     const removeFile = document.getElementById('removeFile');
 
     // File upload handlers
@@ -298,28 +309,30 @@
 
             if (!isValid) return;
 
-            const body = 'NUEVO MENSAJE PARA LOS NOVIOS\n\n' +
-                'De: ' + msgNombre.value + '\n' +
-                'Mensaje: ' + mensaje.value + '\n';
+            const formData = new FormData(messageForm);
+            formData.append('_subject', 'Mensaje para Constanza y Fernando');
+            formData.append('_captcha', 'false');
 
-            if (fotoInput.files.length) {
-                const file = fotoInput.files[0];
-                body += 'Archivo adjunto: ' + file.name + ' (' + (file.size / (1024 * 1024)).toFixed(2) + ' MB)\n';
-            }
-
-            body += '\n---\nEnviado desde la invitación digital de Constanza & Fernando';
-
-            const subject = encodeURIComponent('Mensaje para Constanza y Fernando');
-            const mailtoLink = 'mailto:' + EMAIL + '?subject=' + subject + '&body=' + encodeURIComponent(body);
-
-            window.location.href = mailtoLink;
-
-            showToast('¡Gracias por tu mensaje!');
-            msgNombre.value = '';
-            mensaje.value = '';
-            if (fotoInput) fotoInput.value = '';
-            if (filePreview) filePreview.classList.add('hidden');
-            if (uploadArea) uploadArea.classList.remove('hidden');
+            fetch('https://formspree.io/f/mykrlykw', {
+                method: 'POST',
+                body: formData,
+                headers: {
+                    'Accept': 'application/json'
+                }
+            })
+            .then(response => {
+                if (response.ok) {
+                    showToast('¡Gracias por tu mensaje!');
+                    messageForm.reset();
+                    if (filePreview) filePreview.classList.add('hidden');
+                    if (uploadArea) uploadArea.classList.remove('hidden');
+                } else {
+                    showToast('Hubo un error al enviar. Por favor intenta nuevamente.', 'error');
+                }
+            })
+            .catch(error => {
+                showToast('Hubo un error de conexión. Por favor intenta nuevamente.', 'error');
+            });
         });
     }
 

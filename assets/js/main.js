@@ -63,24 +63,25 @@
     }
 
     /**
-     * Inicializa carrusel simple
+     * Inicializa carrusel con fade y swipe táctil
      */
     function initCarousel() {
         const carousels = document.querySelectorAll('.carousel');
         carousels.forEach(carousel => {
-            const track = carousel.querySelector('.carousel-track');
-            const slides = track ? track.children : [];
+            const viewport = carousel.querySelector('.carousel-viewport');
+            const slides = viewport ? viewport.querySelectorAll('.carousel-slide') : [];
             const prevBtn = carousel.querySelector('.carousel-btn-prev');
             const nextBtn = carousel.querySelector('.carousel-btn-next');
             const dotsContainer = carousel.querySelector('.carousel-dots');
-            if (!track || !slides.length) return;
+            if (!viewport || !slides.length) return;
 
             let currentIndex = 0;
             const totalSlides = slides.length;
-            let autoplayInterval;
 
             const updateCarousel = () => {
-                track.style.transform = `translateX(-${currentIndex * 100}%)`;
+                slides.forEach((slide, index) => {
+                    slide.classList.toggle('active', index === currentIndex);
+                });
                 if (dotsContainer) {
                     Array.from(dotsContainer.children).forEach((dot, index) => {
                         dot.classList.toggle('active', index === currentIndex);
@@ -108,24 +109,30 @@
                 });
             }
 
-            const startAutoplay = () => {
-                stopAutoplay();
-                autoplayInterval = setInterval(next, 2500);
-            };
+            let touchStartX = 0;
+            let touchEndX = 0;
 
-            const stopAutoplay = () => {
-                if (autoplayInterval) {
-                    clearInterval(autoplayInterval);
-                    autoplayInterval = null;
+            carousel.addEventListener('touchstart', (e) => {
+                touchStartX = e.changedTouches[0].screenX;
+            }, { passive: true });
+
+            carousel.addEventListener('touchend', (e) => {
+                touchEndX = e.changedTouches[0].screenX;
+                handleSwipe();
+            }, { passive: true });
+
+            function handleSwipe() {
+                const swipeThreshold = 50;
+                const diff = touchStartX - touchEndX;
+                if (Math.abs(diff) > swipeThreshold) {
+                    if (diff > 0) {
+                        next();
+                    } else {
+                        prev();
+                    }
                 }
-            };
+            }
 
-            carousel.addEventListener('mouseenter', stopAutoplay);
-            carousel.addEventListener('mouseleave', startAutoplay);
-            carousel.addEventListener('touchstart', stopAutoplay, { passive: true });
-            carousel.addEventListener('touchend', startAutoplay);
-
-            startAutoplay();
             updateCarousel();
         });
     }
