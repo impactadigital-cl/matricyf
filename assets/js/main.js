@@ -44,14 +44,34 @@
     }
 
     /**
-     * Inicializa el reproductor de música
+     * Inicializa el reproductor de música vintage
      */
     function initMusicPlayer() {
         const audio = document.getElementById('weddingMusic');
         const playBtn = document.getElementById('musicPlayBtn');
         const playIcon = document.getElementById('musicPlayIcon');
+        const volumeSlider = document.getElementById('musicVolume');
+        const volumeDownBtn = document.getElementById('musicVolumeDown');
+        const volumeUpBtn = document.getElementById('musicVolumeUp');
 
         if (!audio || !playBtn || !playIcon) return;
+
+        audio.volume = volumeSlider ? 0.5 : 0.5;
+
+        const setVolume = (val) => {
+            audio.volume = Math.max(0, Math.min(1, val));
+            if (volumeSlider) volumeSlider.value = audio.volume;
+        };
+
+        if (volumeSlider) {
+            volumeSlider.addEventListener('input', () => setVolume(parseFloat(volumeSlider.value)));
+        }
+        if (volumeDownBtn) {
+            volumeDownBtn.addEventListener('click', () => setVolume((volumeSlider ? parseFloat(volumeSlider.value) : audio.volume) - 0.1));
+        }
+        if (volumeUpBtn) {
+            volumeUpBtn.addEventListener('click', () => setVolume((volumeSlider ? parseFloat(volumeSlider.value) : audio.volume) + 0.1));
+        }
 
         playBtn.addEventListener('click', async () => {
             if (audio.paused) {
@@ -63,6 +83,11 @@
                 playIcon.innerHTML = '<polygon points="6 4v16l13-8z"></polygon>';
                 playBtn.classList.remove('playing');
             }
+        });
+
+        audio.addEventListener('ended', () => {
+            playIcon.innerHTML = '<polygon points="6 4v16l13-8z"></polygon>';
+            playBtn.classList.remove('playing');
         });
     }
 
