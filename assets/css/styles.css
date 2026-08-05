@@ -416,92 +416,14 @@ img {
     }
 }
 
-/* ---------- Carrusel ---------- */
-.carousel {
-    width: 100%;
-    max-width: none;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-.carousel-viewport {
-    position: relative;
-    border-radius: 1rem;
-    overflow: hidden;
-    min-height: 250px;
-}
-
-.carousel-viewport img {
-    width: 100%;
-    height: auto;
-    max-height: 450px;
-    object-fit: contain;
-    display: block;
-}
-
-.carousel-slide {
-    width: 100%;
-    object-fit: contain;
-    opacity: 0;
-    transition: opacity 0.8s ease-in-out;
-    z-index: 1;
-}
-
-.carousel-slide:first-child {
-    position: relative;
-    height: auto;
-}
-
-.carousel-slide:not(:first-child) {
-    position: absolute;
-    top: 0;
-    left: 0;
-    height: 100%;
-}
-
-.carousel-slide.active {
-    opacity: 1;
-    z-index: 2;
-}
-
-.carousel-track {
-    display: flex;
-    transition: transform 2.5s ease-in-out;
-}
-
-.carousel-btn {
-    cursor: pointer;
-    border: none;
-}
-
-.carousel-dots button {
-    width: 10px;
-    height: 10px;
-    border-radius: 9999px;
-    border: none;
-    background-color: #a83461;
-    opacity: 0.35;
-    transition: opacity 0.3s ease;
-    cursor: pointer;
-    padding: 0;
-}
-
-.carousel-dots button.active {
-    opacity: 1;
-}
-
-@media (max-width: 768px) {
-    .carousel {
-        max-width: 100%;
-    }
-}
+/* ---------- Carrusel ---------- (eliminado) */
 
 /* ---------- Print Styles ---------- */
 @media print {
     .scroll-indicator,
     #navbar,
-    #mobileMenuBtn,
-    .carousel-track {
+    #mobileMenuBtn
+    {
         display: none !important;
     }
 
