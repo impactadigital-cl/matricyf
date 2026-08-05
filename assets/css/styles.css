@@ -491,7 +491,7 @@ img {
     background: transparent;
     height: 8px;
     border-radius: 999px;
-    background: linear-gradient(to right, #b4530d 0%, #b4530d 50%, #d2b48c 50%, #d2b48c 100%);
+    background: linear-gradient(to right, #fb65b5 0%, #fb65b5 50%, #fecdd3 50%, #fecdd3 100%);
     outline: none;
     background-size: 100% 100%;
 }
@@ -501,7 +501,7 @@ img {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #b4530d;
+    background: #fb65b5;
     border: 2px solid #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
@@ -511,15 +511,15 @@ img {
     width: 18px;
     height: 18px;
     border-radius: 50%;
-    background: #b4530d;
+    background: #fb65b5;
     border: 2px solid #fff;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
 }
 
 @keyframes pulse-glow {
-    0%, 100% { filter: drop-shadow(0 0 8px rgba(245, 158, 11, 0.6)); }
-    50% { filter: drop-shadow(0 0 16px rgba(245, 158, 11, 0.9)); }
+    0%, 100% { filter: drop-shadow(0 0 8px rgba(251, 101, 181, 0.6)); }
+    50% { filter: drop-shadow(0 0 16px rgba(251, 101, 181, 0.9)); }
 }
 
 @keyframes fadeIn {
